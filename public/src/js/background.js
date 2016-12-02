@@ -88,12 +88,10 @@ export default function background() {
     }
 
     function onScrollPositionChange() {
-        let top = $window.scrollTop();
+        let top = $window.scrollTop() <= 500 ? $window.scrollTop(): 500;
 
-        if (top <= 500) {
-            cameraY = (top * 0.4) * -1;
-            cameraZ = 350 - (top * 0.5);
-        }
+        cameraY = (top * 0.4) * -1;
+        cameraZ = 350 - (top * 0.5);
     }
 
     function onWindowSizeChange() {
