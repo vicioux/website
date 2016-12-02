@@ -88,6 +88,8 @@ a {
 }
 
 .section .section-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
     display: block;
     width: 600px;
 }
@@ -117,7 +119,7 @@ a {
     margin: 0;
 }
 
-.section .section-content ul li p{
+.section .section-content ul li p {
     letter-spacing: 2px;
     font-size: 12px;
 }
@@ -167,7 +169,7 @@ a {
 
 #home .welcome-message h1:after {
     content: '';
-    width:3px;
+    width: 3px;
     height: 40px;
     margin: 30px auto;
     background-color: #fff;
@@ -180,7 +182,23 @@ a {
     font-size: 2em;
 }
 
-@media only screen and (max-width:800px) {
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 14px;
+    }
+
+    #logo {
+        width: 50px;
+    }
+
+    #home .welcome-message h1 {
+        font-size: 3em;
+    }
+
+    .section .section-content h2 {
+        font-size: 2em;
+    }
+
     .section .section-content {
         width: 100%;
     }
