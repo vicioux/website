@@ -179,3 +179,9 @@ a {
     display: block;
     font-size: 2em;
 }
+
+@media only screen and (max-width:800px) {
+    .section .section-content {
+        width: 100%;
+    }
+}
