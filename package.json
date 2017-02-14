@@ -10,7 +10,7 @@
   "author": "Cristian Martinez",
   "license": "MIT",
   "engines": {
-    "node": "5.9.1"
+    "node": "6.9.1"
   },
   "dependencies": {
     "ejs": "^2.5.3",
