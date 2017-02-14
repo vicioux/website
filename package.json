@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "postinstall": "npm run build",
     "start": "node web.js"
   },
   "author": "Cristian Martinez",
