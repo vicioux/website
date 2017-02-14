@@ -1,14 +1,14 @@
 import $ from 'jquery';
 import * as THREE from 'three'
 
-export default function background() {
+function background() {
     const $window = $(window);
     let cameraY = 0;
     let cameraZ = 0;
     let renderer, scene, camera, circle, skelet, particle;
 
     function boot() {
-        renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
         renderer.setSize($window.width(), $window.height());
         renderer.autoClear = false;
@@ -88,7 +88,7 @@ export default function background() {
     }
 
     function onScrollPositionChange() {
-        let top = $window.scrollTop() <= 500 ? $window.scrollTop(): 500;
+        let top = $window.scrollTop() <= 500 ? $window.scrollTop() : 500;
 
         cameraY = (top * 0.4) * -1;
         cameraZ = 350 - (top * 0.5);
@@ -125,3 +125,5 @@ export default function background() {
         init: init
     }
 }
+
+export default background;
