@@ -6,4 +6,4 @@ npm-debug.log
 *.env
 *.dev
 .DS_Store
-/public/bundle.js
+/public/js/bundle.js
