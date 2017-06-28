@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Wedding</title>
+	<title>SH - August 26 Save the date</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.page {
+			position: relative;
+			background: #ffa1c6;
+			background: -moz-linear-gradient(-45deg,  #ffa1c6 0%, #ffd2a7 61%, #fff5e4 100%);
+			background: -webkit-linear-gradient(-45deg,  #ffa1c6 0%,#ffd2a7 61%,#fff5e4 100%);
+			background: linear-gradient(135deg,  #ffa1c6 0%,#ffd2a7 61%,#fff5e4 100%);
+		}
+
+		.logo {
+			max-width: 300px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.logo img {
+			width: 100%;
+			display: block;
+		}
+	</style>
 </head>
 <body>
-	<h1>Wedding August 26</h1>
+	<div class="page">
+		<div class="logo">
+			<img src="/public/wedding/logo.svg" alt="">
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script>
+		jQuery(function ($) {
+			var wH = $(window).height();
+			$('.page').css('height', wH);
+		});
+	</script>
 </body>
 </html>
