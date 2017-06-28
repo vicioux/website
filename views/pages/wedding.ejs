@@ -12,9 +12,9 @@
 		.page {
 			position: relative;
 			background: #ffa1c6;
-			background: -moz-linear-gradient(-45deg,  #ffa1c6 0%, #ffd2a7 61%, #fff5e4 100%);
-			background: -webkit-linear-gradient(-45deg,  #ffa1c6 0%,#ffd2a7 61%,#fff5e4 100%);
-			background: linear-gradient(135deg,  #ffa1c6 0%,#ffd2a7 61%,#fff5e4 100%);
+			background: -moz-linear-gradient(-45deg,  #ffa1c6 0%, #ffd2a7 86%, #fff5e4 100%);
+			background: -webkit-linear-gradient(-45deg,  #ffa1c6 0%,#ffd2a7 86%,#fff5e4 100%);
+			background: linear-gradient(135deg,  #ffa1c6 0%,#ffd2a7 86%,#fff5e4 100%);
 		}
 
 		.logo {
@@ -41,8 +41,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<script>
 		jQuery(function ($) {
-			var wH = $(window).height();
-			$('.page').css('height', wH);
+			$(window).load(function () {
+				var wH = $(window).height();
+				$('.page').css('height', wH);
+			});
 		});
 	</script>
 </body>
