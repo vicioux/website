@@ -15,6 +15,10 @@ app.get('/', function(request, response) {
     response.render('pages/index');
 });
 
+app.get('/wedding', function(request, response) {
+    response.render('pages/wedding');
+});
+
 app.listen(app.get('port'), function() {
     console.log('Website is running on port', app.get('port'));
 });
