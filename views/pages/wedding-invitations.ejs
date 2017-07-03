@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Invitations</title>
+</head>
+<body>
+    <ul>
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email Address">
+            <input type="text" name="name" placeholder="Nombre">
+            <input type="number" name="people" placeholder="Numero de invitados">
+            <button type="submit">Crear invitacion</button>
+        </form>
+        <% for(invitationIndex in invitations) { %>
+            <li>
+                <p>Nombre: <%= invitations[invitationIndex].name %> - Status: <%= invitations[invitationIndex].status %></p>
+                <p>Link: <a href="/wedding/<%= invitationIndex %>">http://cristianmartinez.co/wedding/<%= invitationIndex %></a></p>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>

@@ -4,9 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Invitation response</title>
 </head>
 <body>
-    <h2>Wedding invitation</h2>
+    <div id="card">
+        <h2>Hola <%= invitation.name %>,</h2>
+        <button id="accept_invitation_btn">Accep invitation</button>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        var INVITATION_CONTEXT = {
+            token: "<%= token %>",
+        };
+
+        var invitationServiceModule = (function (){
+            function acceptInvitation() {
+                return $.ajax('/wedding/' + INVITATION_CONTEXT.token + '/accept', {
+                    method: 'POST',
+                })
+            }
+
+            return {
+                acceptInvitation: acceptInvitation
+            }
+        })();
+
+        var invitationModule = (function () {
+            var ACCEPT_INVITATION_BTN = 'accept_invitation_btn';
+
+            function init() {
+                bindElementEvents();
+            }
+
+            function bindElementEvents() {
+                var $document = $(document);
+                $document.on('click', '#' + ACCEPT_INVITATION_BTN, onAcceptInvitationClick)                
+            }
+
+            function onAcceptInvitationClick(e) {
+                e.preventDefault();
+                invitationServiceModule.acceptInvitation().done(onAcceptInvitationSuccess);
+            }
+
+            function onAcceptInvitationSuccess(data) {
+                console.log(data);
+            }
+
+            return {
+                init: init
+            }
+        })();
+
+        jQuery(function () {
+            invitationModule.init();
+        });
+    </script>
 </body>
 </html>
