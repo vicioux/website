@@ -4,12 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invitation response</title>
+    <title>Hola <%= invitation.name %>, esta es tu invitación</title>
+    <link rel="stylesheet" href="/public/styles/wedding-invitation-card.css">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Prata" rel="stylesheet">
 </head>
 <body>
-    <div id="card">
-        <h2>Hola <%= invitation.name %>,</h2>
-        <button id="accept_invitation_btn">Accep invitation</button>
+    <div class="bg"></div>
+    <div class="card-section initial">
+        <div class="logo-container">
+            <img src="/public/wedding/logo.svg" alt="SH" class="logo">
+        </div>
+        <div class="initial-message">
+            <span class="emoji-wedding x2">💒</span>
+            <h1>Hola <%= invitation.name %>,</h1>
+            <p>
+                Nos Amamos Y ya que hemos podido afrontar tormentas severas juntos y no nos imaginamos separados, Sabemos que tomamos la decision correcta...
+                <h2><span class="emoji-wedding">🏃🏿</span>!!NOS CASAMOS¡¡<span class="emoji-wedding">👰</span></h2>
+            </p>
+        </div>
+
+        <% if(invitation.status !== 'accepted') { %>
+        <div class="card-actions">
+            <button id="accept_invitation_btn" class="btn">Aceptar</button>
+        </div>
+        <% } else { %>
+            <div class="card-info">
+                <p><b>Lugar:</b> Calle 75 sur # 43A 202 - Lc 229 (Sabaneta, CC Aves Maria)</p>
+                <p><b>Fecha:</b> 26 de Agosto - 4:00pm</p>
+                <p>Lluvia de sobres</p>
+            </div>
+        <% } %>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -22,7 +46,7 @@
             function acceptInvitation() {
                 return $.ajax('/wedding/' + INVITATION_CONTEXT.token + '/accept', {
                     method: 'POST',
-                })
+                });
             }
 
             return {
@@ -44,11 +68,13 @@
 
             function onAcceptInvitationClick(e) {
                 e.preventDefault();
+                var $btn = $(this);
+                $btn.attr('disabled', true);
                 invitationServiceModule.acceptInvitation().done(onAcceptInvitationSuccess);
             }
 
             function onAcceptInvitationSuccess(data) {
-                console.log(data);
+                location.reload();
             }
 
             return {
