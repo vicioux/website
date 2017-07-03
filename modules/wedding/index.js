@@ -16,18 +16,16 @@ function jsonResponse(res, data) {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+/**
+ * Logo page
+ */
 router.get('/', function(request, response) {
     response.render('pages/wedding');
 });
 
-router.get('/invitations', middlewares.basicAuth, function(request, response) {
-    const db = request.app.get('db');
-    db.ref('/invitations').once('value', function (snapshot) {
-        const invitations = snapshot.val();
-        response.render('pages/wedding-invitations', { invitations });
-    });
-});
-
+/**
+ * Admin routes
+ */
 router.get('/invitations', middlewares.basicAuth, function(request, response) {
     const db = request.app.get('db');
     db.ref('/invitations').once('value', function (snapshot) {
@@ -50,6 +48,9 @@ router.post('/invitations', middlewares.basicAuth, function(request, response) {
     });
 });
 
+/**
+ * Invitation routes
+ */
 router.get('/:token', middlewares.isValidToken, function(request, response) {
     const invitation = request._invitation;
     const token = request.params.token;
